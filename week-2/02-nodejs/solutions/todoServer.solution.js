@@ -61,7 +61,7 @@
       description: req.body.description
     };
     todos.push(newTodo);
-    res.status(201).json(newTodo);
+      
   });
   
   app.put('/todos/:id', (req, res) => {

@@ -8,10 +8,10 @@ function isAnagram(str1, str2) {
   if (str1.length !== str2.length) {
     return false;
   }
-  sortedStr1 = str1.toUpperCase().split('').sort().join('');
-  sortedStr2 = str2.toUpperCase().split('').sort().join('');
-  console.log(sortedStr1, sortedStr2)
-  return sortedStr1 === sortedStr2;
+  string1 = str1.toUpperCase().split('').sort().join('');
+  string2 = str2.toUpperCase().split('').sort().join('');
+  console.log(string1, string2)
+  return string1 === string2;
 }
 
 module.exports = isAnagram;

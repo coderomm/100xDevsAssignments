@@ -9,5 +9,14 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
-    return 0.01;
+    let sum = 0;
+    let startTime = Date.now();
+    for (let i = 1; i <= n; i++) {
+        sum = sum + i;
+    }
+    let endTime = Date.now();
+    let difference = endTime - startTime;
+    console.log("Sum:", sum);
+    console.log("Time taken (ms):", difference);
+    return difference;
 }
