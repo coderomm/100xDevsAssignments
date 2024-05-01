@@ -53,12 +53,10 @@ app.get("/todos", (req, res) => {
   res.status(200).json(todos);
 });
 
-app.get("/todos/:id", (req, res) => {
+app.get('/todos/:id', (req, res) => {
   const todo = todos.find(t => t.id === parseInt(req.params.id));
   if (!todo) {
-    res.status(404).json({
-      error: "Not Found"
-    })
+    res.status(404).json("File Not Found")
   }
   res.status(200).json(todo);
 });
@@ -70,10 +68,10 @@ app.post("/todos", (req, res) => {
     description: req.body.description
   };
   todos.push(newArr);
-  res.status(201).json(newTodo);
+  res.status(200).json(newTodo);
 });
 
-app.put("/todos/:id", (req, res) => {
+app.put('/todos/:id', (req, res) => {
   const todoIndex = todos.find(t => t.id === parseInt(req.params.id));
   if (todoIndex === -1) {
     res.status(404).send("Not Found");
@@ -84,7 +82,7 @@ app.put("/todos/:id", (req, res) => {
   }
 });
 
-app.delete("/todos/:id", (req, res) => {
+app.delete('/todos/:id', (req, res) => {
   const todoIndex = todos.find(t => t.id === parseInt(req.params.id));
   if (todoIndex === -1) {
     res.status(404).send("Not Found");
