@@ -4,7 +4,7 @@
  * the function should return a promise just like before
  */
 
-function sleep(milliseconds) {
+function haltsJSThread(milliseconds) {
     const start = Date.now();
     let current = null;
     do {
@@ -15,4 +15,4 @@ function sleep(milliseconds) {
     })
 }
 
-module.exports = sleep;
+module.exports = haltsJSThread;
