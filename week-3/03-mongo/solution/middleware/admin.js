@@ -11,15 +11,15 @@ function adminMiddleware(req, res, next) {
         username: username,
         password: password
     })
-    .then(function(value) {
-        if (value) {
-            next();
-        } else {
-            res.status(403).json({
-                msg: "Admin doesnt exist"
-            })
-        }
-    })
+        .then(function (value) {
+            if (value) {
+                next();
+            } else {
+                res.status(403).json({
+                    msg: "Admin doesnt exist"
+                })
+            }
+        })
 }
 
 module.exports = adminMiddleware;

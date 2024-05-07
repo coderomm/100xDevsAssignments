@@ -10,15 +10,15 @@ function userMiddleware(req, res, next) {
         username: username,
         password: password
     })
-    .then(function(value) {
-        if (value) {
-            next();
-        } else {
-            res.status(403).json({
-                msg: "User doesnt exist"
-            })
-        }
-    })
+        .then(function (value) {
+            if (value) {
+                next();
+            } else {
+                res.status(403).json({
+                    msg: "User doesnt exist"
+                })
+            }
+        })
 }
 
 module.exports = userMiddleware;

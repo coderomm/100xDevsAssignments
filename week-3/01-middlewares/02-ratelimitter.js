@@ -13,14 +13,31 @@ const app = express();
 
 let numberOfRequestsForUser = {};
 setInterval(() => {
-    numberOfRequestsForUser = {};
+  numberOfRequestsForUser = {};
 }, 1000)
 
-app.get('/user', function(req, res) {
+function rateLimitter(req, res, next) {
+  const userId = req.headers['user-id'];
+  if (!userId) {
+    return res.status(400).send('User ID is required');
+  }
+  if (!numberOfRequestsForUser[userId]) {
+    numberOfRequestsForUser[userId] = 0;
+  }
+  if (numberOfRequestsForUser[userId] >= 5) {
+    return res.status(429).send('To many requests');
+  }
+  numberOfRequestsForUser[userId] = numberOfRequestsForUser[userId] + 1;
+  next();
+}
+
+app.use(rateLimitter);
+
+app.get('/user', function (req, res) {
   res.status(200).json({ name: 'john' });
 });
 
-app.post('/user', function(req, res) {
+app.post('/user', function (req, res) {
   res.status(200).json({ msg: 'created dummy user' });
 });
 
